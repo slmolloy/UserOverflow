@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp"
+    >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/itemUsersAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_foreground"
+        />
+
+    <TextView
+        android:id="@+id/itemUsersName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toEndOf="@id/itemUsersAvatar"
+        app:layout_constraintBottom_toTopOf="@id/itemUsersReputation"
+        tools:text="Some really long user name"
+        />
+
+    <TextView
+        android:id="@+id/itemUsersReputation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/itemUsersGoldBullet"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/itemUsersAvatar"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersAvatar"
+        tools:text="1000000999999"
+        />
+
+    <ImageView
+        android:id="@+id/itemUsersGoldBullet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp"
+        android:src="@drawable/badge_gold"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersGoldScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@id/itemUsersAvatar"
+        app:layout_constraintTop_toTopOf="@id/itemUsersGoldScore"
+        />
+
+    <TextView
+        android:id="@+id/itemUsersGoldScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/itemUsersSilverBullet"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/itemUsersGoldBullet"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersAvatar"
+        tools:text="1000000"
+        />
+
+    <ImageView
+        android:id="@+id/itemUsersSilverBullet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp"
+        android:src="@drawable/badge_silver"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersSilverScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toEndOf="@id/itemUsersAvatar"
+        app:layout_constraintTop_toTopOf="@id/itemUsersSilverScore"
+        />
+
+    <TextView
+        android:id="@+id/itemUsersSilverScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/itemUsersBronzeBullet"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/itemUsersSilverBullet"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersAvatar"
+        tools:text="20"
+        />
+
+
+    <ImageView
+        android:id="@+id/itemUsersBronzeBullet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp"
+        android:src="@drawable/badge_bronze"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersBronzeScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@id/itemUsersAvatar"
+        app:layout_constraintTop_toTopOf="@id/itemUsersBronzeScore"
+        />
+
+    <TextView
+        android:id="@+id/itemUsersBronzeScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/itemUsersBronzeBullet"
+        app:layout_constraintBottom_toBottomOf="@id/itemUsersAvatar"
+        tools:text="3000000"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
