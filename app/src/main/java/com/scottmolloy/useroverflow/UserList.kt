@@ -12,9 +12,10 @@ object UserList {
                 it.toDouble(),
                 names[it % names.size],
                 Random.nextDouble() * 100000000,
-                BadgeCounts(score(), score(), score())
+                BadgeCounts(score(), score(), score()),
+                "https://www.gravatar.com/avatar/6d8ebb117e8d83d74ea95fbdd0f87e13?s=128&d=identicon&r=PG"
             )
         }
 
-    fun score(): Int = Random.nextInt().absoluteValue % 10000
+    private fun score(): Int = Random.nextInt().absoluteValue % 10000
 }

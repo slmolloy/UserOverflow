@@ -1,5 +1,7 @@
 package com.scottmolloy.useroverflow
 
+import androidx.lifecycle.MutableLiveData
+
 class UsersDataSource() {
-    fun getUsers(): List<User> = UserList.sampleUserList()
+    fun getUsers(liveData: MutableLiveData<List<User>>) = UsersApi.getUsers(liveData)
 }

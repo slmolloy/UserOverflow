@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.scottmolloy.useroverflow.databinding.FragmentUsersBinding
 
 class UsersFragment : Fragment(R.layout.fragment_users) {
 
     private var binding: FragmentUsersBinding? = null
+    private val usersViewModel: UsersViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +20,12 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         lifecycleScope.launchWhenStarted {
             activity?.setTitle(R.string.list_title)
 
-            val adapter = UsersAdapter(UsersDataSource().getUsers())
-            binding?.usersRecyclerView?.adapter = adapter
+            usersViewModel.users.observe(viewLifecycleOwner) { users ->
+                val adapter = UsersAdapter(users)
+                binding?.usersRecyclerView?.adapter = adapter
+            }
+
+            usersViewModel.refresh()
         }
     }
 
