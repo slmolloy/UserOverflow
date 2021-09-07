@@ -3,6 +3,7 @@ package com.scottmolloy.useroverflow
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.scottmolloy.useroverflow.databinding.ItemUsersBinding
 import kotlin.math.roundToInt
 
@@ -15,6 +16,9 @@ class UsersAdapter(private val users: List<User>) : RecyclerView.Adapter<UsersAd
             binding.itemUsersGoldScore.text = user.badge_counts.gold.toString()
             binding.itemUsersSilverScore.text = user.badge_counts.silver.toString()
             binding.itemUsersBronzeScore.text = user.badge_counts.bronze.toString()
+            Glide.with(this.itemView.context)
+                .load(user.profile_image)
+                .into(binding.itemUsersAvatar)
         }
     }
 
