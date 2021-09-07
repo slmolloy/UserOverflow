@@ -9,6 +9,20 @@ class UsersViewModel : ViewModel() {
     val users: LiveData<List<User>> = mutableUsers
 
     fun refresh() {
-        UsersDataSource().getUsers(mutableUsers)
+        UsersDataSource.getUsers(mutableUsers)
     }
+
+    private val mutableViewState = MutableLiveData<UserViewState>(UserViewState.ListView)
+    val viewState: LiveData<UserViewState> = mutableViewState
+    fun showDetails(user: User) {
+        mutableViewState.postValue(UserViewState.DetailsView(user))
+    }
+    fun showList() {
+        mutableViewState.postValue(UserViewState.ListView)
+    }
+}
+
+sealed class UserViewState {
+    object ListView : UserViewState()
+    class DetailsView(val user: User) : UserViewState()
 }

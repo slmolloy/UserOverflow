@@ -13,8 +13,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/itemUsersAvatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/avatar_small"
+        android:layout_height="@dimen/avatar_small"
         android:padding="4dp"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"

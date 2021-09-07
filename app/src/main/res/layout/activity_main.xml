@@ -19,7 +19,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_panel"
-        android:name="com.scottmolloy.useroverflow.UsersFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constrainedHeight="true"

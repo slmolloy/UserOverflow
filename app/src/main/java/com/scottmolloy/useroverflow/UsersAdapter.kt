@@ -5,14 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.scottmolloy.useroverflow.databinding.ItemUsersBinding
-import kotlin.math.roundToInt
 
-class UsersAdapter(private val users: List<User>) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+class UsersAdapter(private val users: List<User>, private val onClick: (User) -> Unit)
+    : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ItemUsersBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemUsersBinding, val onClick: (User) -> Unit)
+        : RecyclerView.ViewHolder(binding.root) {
+        var currentUser: User? = null
+        init {
+            itemView.setOnClickListener {
+                currentUser?.let { user -> onClick(user) }
+            }
+        }
+
         fun bind(user: User) {
+            currentUser = user
             binding.itemUsersName.text = user.display_name
-            binding.itemUsersReputation.text = user.reputation.roundToInt().toString()
+            binding.itemUsersReputation.text = user.reputation.toString()
             binding.itemUsersGoldScore.text = user.badge_counts.gold.toString()
             binding.itemUsersSilverScore.text = user.badge_counts.silver.toString()
             binding.itemUsersBronzeScore.text = user.badge_counts.bronze.toString()
@@ -22,8 +31,10 @@ class UsersAdapter(private val users: List<User>) : RecyclerView.Adapter<UsersAd
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemUsersBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(
+            ItemUsersBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onClick)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(users[position])
 

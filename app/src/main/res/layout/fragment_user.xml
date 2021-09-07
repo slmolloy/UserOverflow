@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/userAvatar"
+        android:layout_width="@dimen/avatar_large"
+        android:layout_height="@dimen/avatar_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_foreground"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/userLabelGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        />
+
+    <TextView
+        android:id="@+id/userReputationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="4dp"
+        android:text="@string/reputation"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/userLabelGuide"
+        app:layout_constraintTop_toBottomOf="@id/userAvatar"
+        />
+
+    <TextView
+        android:id="@+id/userReputation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="4dp"
+        app:layout_constraintStart_toEndOf="@id/userLabelGuide"
+        app:layout_constraintTop_toBottomOf="@id/userAvatar"
+        tools:text="100000"
+        />
+
+    <TextView
+        android:id="@+id/userLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="4dp"
+        android:text="@string/location"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/userLabelGuide"
+        app:layout_constraintTop_toBottomOf="@id/userReputationLabel"
+        />
+
+    <TextView
+        android:id="@+id/userLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="4dp"
+        app:layout_constraintStart_toEndOf="@id/userLabelGuide"
+        app:layout_constraintTop_toBottomOf="@id/userReputation"
+        tools:text="Earth"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

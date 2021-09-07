@@ -12,11 +12,12 @@ data class UserResponse(
 
 @Serializable
 data class User(
-    val account_id: Double,
-    val display_name: String,
-    val reputation: Double,
     val badge_counts: BadgeCounts,
+    val account_id: Int,
+    val reputation: Int,
+    val location: String? = null,
     val profile_image: String,
+    val display_name: String,
 )
 
 @Serializable
