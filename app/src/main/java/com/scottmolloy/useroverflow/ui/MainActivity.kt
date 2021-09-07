@@ -1,4 +1,4 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,11 +6,18 @@ import androidx.activity.viewModels
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.lifecycle.lifecycleScope
+import com.scottmolloy.useroverflow.*
 import com.scottmolloy.useroverflow.databinding.ActivityMainBinding
 
+/**
+ * MainActivity contains the action bar and fragment container.
+ * This activity updates the action bar title at the request of fragments.
+ * This activity observers the UserViewModel to determine when navigation changes are made and
+ * displays the appropriate fragment.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val usersViewModel: UsersViewModel by viewModels()
+    private val usersViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +31,13 @@ class MainActivity : AppCompatActivity() {
                     is UserViewState.DetailsView -> {
                         supportFragmentManager.commit {
                             setReorderingAllowed(true)
-                            replace<UserFragment>(R.id.fragment_panel, "details")
+                            replace<UserFragment>(R.id.fragment_panel)
                         }
                     }
                     is UserViewState.ListView -> {
                         supportFragmentManager.commit {
                             setReorderingAllowed(true)
-                            replace<UsersFragment>(R.id.fragment_panel, "list")
-                            addToBackStack(null)
+                            replace<UsersFragment>(R.id.fragment_panel)
                         }
                     }
                 }

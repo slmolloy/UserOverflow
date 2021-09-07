@@ -1,4 +1,4 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.data
 
 import kotlinx.serialization.Serializable
 

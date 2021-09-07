@@ -1,4 +1,4 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.scottmolloy.useroverflow.R
+import com.scottmolloy.useroverflow.data.User
 import com.scottmolloy.useroverflow.databinding.FragmentUserBinding
 
+/**
+ * Fragment for displaying user details.
+ */
 class UserFragment : Fragment(R.layout.fragment_user) {
 
     private var binding: FragmentUserBinding? = null
-    private val usersViewModel: UsersViewModel by activityViewModels()
+    private val usersViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +29,9 @@ class UserFragment : Fragment(R.layout.fragment_user) {
             usersViewModel.viewState.observe(viewLifecycleOwner) { state ->
                 when (state) {
                     is UserViewState.DetailsView -> { bindUser(state.user) }
-                    else -> { }
+                    else -> {
+                        // This would be an error
+                    }
                 }
             }
         }
@@ -52,6 +59,11 @@ class UserFragment : Fragment(R.layout.fragment_user) {
             .load(user.profile_image)
             .into(userAvatar)
         userReputation.text = user.reputation.toString()
+
+        /**
+         * Some location strings contained html escaped characters and needed this for display.
+         * This code to handle html escaping would probably be needed in a lot more places.
+         */
         userLocation.text = HtmlCompat.fromHtml(user.location ?: "", FROM_HTML_MODE_LEGACY).toString()
     }
 }

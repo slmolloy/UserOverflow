@@ -1,4 +1,4 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.data
 
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
@@ -9,6 +9,9 @@ import io.ktor.client.request.*
 import kotlinx.coroutines.runBlocking
 
 object UsersApi {
+    /**
+     * Leaving httpClient here for simplicity.
+     */
     private val httpClient = HttpClient(Android) {
         install(JsonFeature) {
             serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
@@ -24,8 +27,11 @@ object UsersApi {
     }
 
     private val url = "https://api.stackexchange.com/2.2/users"
-    private val pageSize = 20
+    private val pageSize = 50
 
+    /**
+     * Function for making api request. Page and pagesize parameters are not being fully utilized.
+     */
     fun getUsers(): List<User> = runBlocking {
         val response: UserResponse = httpClient.get(url) {
             parameter("site", "stackoverflow")

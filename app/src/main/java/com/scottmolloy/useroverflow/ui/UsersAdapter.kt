@@ -1,11 +1,18 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.scottmolloy.useroverflow.data.User
 import com.scottmolloy.useroverflow.databinding.ItemUsersBinding
 
+/**
+ * Adapter for displaying list of users in a RecyclerView.
+ *
+ * @property users list to be displayed by adapter
+ * @property onClick callback so click events can be handled elsewhere
+ */
 class UsersAdapter(private val users: List<User>, private val onClick: (User) -> Unit)
     : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
@@ -13,6 +20,7 @@ class UsersAdapter(private val users: List<User>, private val onClick: (User) ->
         : RecyclerView.ViewHolder(binding.root) {
         var currentUser: User? = null
         init {
+            // Moved click listener setup out of bind to improve performance.
             itemView.setOnClickListener {
                 currentUser?.let { user -> onClick(user) }
             }

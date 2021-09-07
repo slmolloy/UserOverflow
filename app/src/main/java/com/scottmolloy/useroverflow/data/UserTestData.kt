@@ -1,10 +1,13 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.data
 
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-object UserList {
+/**
+ * UserTestData is used for the creation of test data.
+ */
+object UserTestData {
     private val names = listOf("Liam","Olivia","Noah","Emma","Oliver","Ava","Elijah","Charlotte","William","Sophia","James","Amelia","Benjamin","Isabella","Lucas","Mia","Henry","Evelyn","Alexander","Harper")
 
     fun sampleUserList(): List<User> =

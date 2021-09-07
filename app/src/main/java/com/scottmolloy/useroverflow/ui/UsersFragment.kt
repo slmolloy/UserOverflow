@@ -1,4 +1,4 @@
-package com.scottmolloy.useroverflow
+package com.scottmolloy.useroverflow.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.scottmolloy.useroverflow.R
+import com.scottmolloy.useroverflow.data.User
 import com.scottmolloy.useroverflow.databinding.FragmentUsersBinding
 
+/**
+ * Fragment for displaying list of users.
+ */
 class UsersFragment : Fragment(R.layout.fragment_users) {
 
     private var binding: FragmentUsersBinding? = null
-    private val usersViewModel: UsersViewModel by activityViewModels()
+    private val usersViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +29,6 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
                 val adapter = UsersAdapter(users) { user -> itemClicked(user) }
                 binding?.usersRecyclerView?.adapter = adapter
             }
-
-            usersViewModel.refresh()
         }
     }
 
